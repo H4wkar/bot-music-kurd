@@ -11,8 +11,10 @@ PM_START_TEXT = """
 ‣ **باشترین بۆت لە ڕووی تایبەتمەندییەوە**.
 ‣ **لەسەر بنەمای کتێبخانەی Telethon دروستکراوە بۆیە بۆتەکە خێرایە**!
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
 @JE313P.on(events.NewMessage(pattern="^[?!/]start$"))
 async def start(event):
+
     if event.is_private:
        await event.client.send_file(event.chat_id,
              Config.START_IMG,
