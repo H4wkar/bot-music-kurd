@@ -39,6 +39,6 @@ async def _(event):
        await event.edit(PM_START_TEXT.format(event.sender.first_name), buttons=[
         [Button.url("➕ بۆ ئادم کلیک لێرە بکە", f"https://t.me/{BOT_USERNAME}?startgroup=true")],
         [Button.url("خاوه ن بۆت", "https://t.me/SARKAUT")],
-        [Button.url("پشتگتری", f"https://t.me/{Config.SUPPORT}"), Button.url("القناة", f"https://t.me/{Config.CHANNEL}")],
+        [Button.url("پشتگتری", f"https://t.me/{Config.SUPPORT}"), Button.url("که ناڵ", f"https://t.me/{Config.CHANNEL}")],
         [Button.inline("فه رمانه کان", data="help")]])
        return
