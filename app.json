@@ -23,12 +23,12 @@
         "SUPPORT": {
             "description": "لێره لینکی گرووپت بنوسه به بێ @",
             "required": false,
-            "value": "JEPTHONSUPPORT"
+            "value": "Grup_Shetakann"
         },
         "CHANNEL": {
             "description": "لێره لینکی که ناڵت بنوسه به بێ ",
             "required": false,
-            "value": "JEPTHON"
+            "value": "Trpay_dllm"
         },
         "BOT_USERNAME": {
             "description": "یوزرنیمی بۆتت بنوسه به بێ @",
