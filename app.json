@@ -1,42 +1,42 @@
 {
-    "name": "سورس جيبثون ميوزك",
-    "description": "سورس ميوزك لتشغيل الاغاني في المحادثات الصوتية .",
+    "name": "سەرچاوە مۆسیقای گیپتۆن",
+    "description": "بۆ لێدانی گۆرانی لە چاتی دەنگیدا .",
     "keywords": ["JEPTHON", "JEPTHON-MUSIC", "music", "voice chat", "telegram", "Yukki", "Yukki Music", "Private Music", "telethon"],
     "repository": "https://github.com/lMl10l/Jepthon-313",
   "stack": "container",
     "env": {
         "APP_ID": {
-            "description": "ضع هنا الايبي ايدي حساب المساعد"
+            "description": "لێره ئاپ ئایدی ئاکاونتی یارمه تێده ر بنوسه"
         },
         "API_HASH": {
-            "description": "ضع هنا الايبي هاش حساب المساعد"
+            "description": "لێره ئاپ هاش ئاکاونتی یارمه تێده ر بنوسه"
         },
         "STRING_SESSION": {
-            "description": "يرجى وضع كود سيشن تليثون (كود تيرمكس) للحساب المساعد هنا ",
+            "description": "لێره کۆدی تیرموکسی ئاکاونتی یارمه تێده ر بنوسه ",
             "required": true
         },
         "HEROKU_MODE": {
-            "description": "لا تغير هذه نهائيا",
+            "description": "ده ستکاری ئه مه مه که",
             "required": true,
             "value": "ENABLE"
         },
         "SUPPORT": {
-            "description": "ضع هنا معرف مجموعتك او قناتك بدون @",
+            "description": "لێره لینکی گرووپت بنوسه به بێ @",
             "required": false,
             "value": "JEPTHONSUPPORT"
         },
         "CHANNEL": {
-            "description": "ضع معرف قناتك اذا اردت غير ذلك اتركها ",
+            "description": "لێره لینکی که ناڵت بنوسه به بێ ",
             "required": false,
             "value": "JEPTHON"
         },
         "BOT_USERNAME": {
-            "description": "هنا ضع معرف البوت بدون @",
+            "description": "یوزرنیمی بۆتت بنوسه به بێ @",
             "required": false,
             "value": ""
         },
         "BOT_TOKEN": {
-            "description": "هنا ضع توكن بوتك",
+            "description": "لێره توکن بۆتت بنوسه",
             "required": true,
             "value": ""
         }
