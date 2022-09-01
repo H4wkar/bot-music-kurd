@@ -12,6 +12,10 @@ PM_START_TEXT = """
 ‣ **لەسەر بنەمای کتێبخانەی Telethon دروستکراوە بۆیە بۆتەکە خێرایە**!
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
+
+
+
+
 @JE313P.on(events.NewMessage(pattern="^[?!/]start$"))
 async def start(event):
 
