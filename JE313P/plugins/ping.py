@@ -5,7 +5,7 @@ from telethon import Button, events
 from JE313P import *
 
 IMG = os.environ.get(
-    "PING_PIC", "https://telegra.ph/file/2ad68bd0e391a69163d0a.jpg"
+    "PING_PIC", "https://telegra.ph/file/2e9d4b0c76cf8c67f07df.jpg"
 )
 ms = 4
 
@@ -13,10 +13,10 @@ ALIVE = os.environ.get(
     "ALIVE", "@lMl10l"
 )
 
-CAPTION = f"**سرعة البنك:** {ms}\n المالك:『{ALIVE}』"
+CAPTION = f"**خێرای ئینته رنیتی بوت:** {ms}\n المالك:『{ALIVE}』"
 
 
-@JE313P.on(events.NewMessage(pattern="^/بنك"))
+@JE313P.on(events.NewMessage(pattern="^/خه ت"))
 async def _(event):
     UMM = [[Button.url("السورس", "https://t.me/JEPTHON")]]
     await JE313P.send_file(event.chat_id, IMG, caption=CAPTION, buttons=UMM)
