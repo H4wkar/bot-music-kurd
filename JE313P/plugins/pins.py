@@ -6,40 +6,40 @@ from JE313P import *
 
 
 PINS_TEXT = """
-**✘ اوامر تثبيت والغاء التثبيت لرسائل في المجموعة**
+**فرمانەکانی دانان و لابردنی نامەکانی ناو گروپ**
 
-‣ `!تثبيت`
-بالرد على الرسالة التي تريد تثبيتها
+‣ `!دامەزراندنەکان `
+وەڵامی ئەو نامەیە بدەرەوە کە دەتەوێت دایبمەزرێنیت
 
-‣ `!الغاء تثبيت`
-بالرد على الرسالت التي تريد الغاء تثبيتها
+‣ `!هەڵگرتنەوە `
+وەڵامی ئەو نامەیە بدەرەوە کە دەتەوێت لایبه ی
 
-‣ `!الغاء التثبيت للكل`
-لالغاء تثبيبت جميع الرسائل في المجموعة
+‣ `!لابردنی دامەزراندن بۆ هەمووان `
+لابردنی دامەزراندن هەموو نامەکانی ناو گرووپ
 
-‣ `!الرسائل المثبتة`
-لأظهار الرسائل المثبتة في المجموعة
+‣ `!نامەی پین کراو `
+بۆ پیشاندانی ئەو نامانەی لە گروپەکەدا پین کراون
 
-[𖠄 𝗝𝗲𝗽𝘁𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 𖠄](https://t.me/JEPTHON)
+
 """
 
-@JE313P.on(events.NewMessage(pattern="^[?!/]الرسائل المثبتة"))
+@JE313P.on(events.NewMessage(pattern="^[?!/]نامەی پین کراو"))
 async def get_pinned(event):
     chat_id = (str(event.chat_id)).replace("-100", "")
 
     Ok = await JE313P.get_messages(event.chat_id, ids=types.InputMessagePinned()) 
-    tem = f"الرسائل المثبتة في الدردشة{event.chat.title} هي <a href=https://t.me/c/{chat_id}/{Ok.id}>here</a>."
+    tem = f"نامەی پینکراو لە چاتدا{event.chat.title} ئه و <a href=https://t.me/c/{chat_id}/{Ok.id}>here</a>."
     await event.reply(tem, parse_mode="html", link_preview=False)
 
-@JE313P.on(events.NewMessage(pattern="^[!?/]تثبيت ?(.*)"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]پین ?(.*)"))
 @is_admin
 async def pin(event, perm):
     if not perm.pin_messages:
-       await event.reply("يجب ان تمتلك صلاحيات التثببيت اولا")
+       await event.reply("پێویستە سەرەتا مۆڵەتی دامەزراندنت هەبێت")
        return
     msg = await event.get_reply_message()
     if not msg:
-       await event.reply("يجب عليك الرد على الرسالة اولا")
+       await event.reply("پێویستە سەرەتا وەڵامی نامەکە بدەیتەوە")
        return
     input_str = event.pattern_match.group(1)
     if "notify" in input_str:
@@ -47,53 +47,53 @@ async def pin(event, perm):
        return
     await JE313P.pin_message(event.chat_id, msg)   
 
-@JE313P.on(events.NewMessage(pattern="^[!?/]الغاء تثبيت ?(.*)"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]لابردنی پین ?(.*)"))
 @is_admin
 async def unpin(event, perm):
     if not perm.pin_messages:
-       await event.reply("يجب ان تمتلك صلاحيات التثببيت اولا")
+       await event.reply("پێویستە سەرەتا مۆڵەتی دامەزراندنت هەبێت")
        return
     chat_id = (str(event.chat_id)).replace("-100", "")
     ok = await JE313P.get_messages(event.chat_id, ids=types.InputMessagePinned())
     await JE313P.unpin_message(event.chat_id, ok)
-    await event.reply(f"تم بنجاح الغاء التثبيت [لهذه الرسالة](t.me/{event.chat.username}/{ok.id}).", link_preview=False)
+    await event.reply(f"بە سەرکەوتوویی لابردنی دامەزراندن[بۆ ئەم پەیامە](t.me/{event.chat.username}/{ok.id}).", link_preview=False)
 
 
-@JE313P.on(events.NewMessage(pattern="^[!?/]الغاء التثبيت للكل$"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]لابردنی دامەزراندن بۆ هەمووان$"))
 async def unpinall(event, perm):
     if not perm.pin_messages:
-       await event.reply("يجب ان تمتلك صلاحيات التثببيت اولا")
+       await event.reply("پێویستە سەرەتا مۆڵەتی دامەزراندنت هەبێت")
        return
     UNPINALL = """
-هل انت متأكد من الغاء تثبيت الرسائل ؟
+ئایا دڵنیای کە نامەکان هەڵدەگریت ؟
 """
 
     await JE313P.send_message(event.chat_id, UNPINALL, buttons=[
-    [Button.inline("تأكيد", data="unpin")], 
-    [Button.inline("الغاء", data="cancel")]])
+    [Button.inline("دووپات کردنەوە", data="unpin")], 
+    [Button.inline("هەڵوەشاندنەوە", data="cancel")]])
 
 @JE313P.on(events.callbackquery.CallbackQuery(data="unpin"))
 async def confirm(event):
     check = await event.client.get_permissions(event.chat_id, event.sender_id)
     if check.is_creator:
         await JE313P.unpin_message(event.chat_id)
-        await event.edit("تم بنجاح الغاء تثببيت جميع الرسائل")
+        await event.edit("به سه رکه وتوی هه مو دامەزرانده کان هەڵوەشاندرانه وه")
         return 
 
-    await event.answer("يجب ان تكون مالك المجموعة اولا")
+    await event.answer("پێویستە سەرەتا خاوەنی گروپەکە بیت")
 
 @JE313P.on(events.callbackquery.CallbackQuery(data="cancel"))
 async def cancel(event):
 
     check = await event.client.get_permissions(event.chat_id, event.sender_id)
     if check.is_creator:
-        await event.edit("عملية الغاء تثبيت جميع الرسائل تم الغائها ")
+        await event.edit("پرۆسەی لابردنی دامەزراندن بۆ هەموو نامەکان هەڵوەشاوەتەوە ")
         return 
 
-    await event.answer("يجب ان تكون مالك المجموعة اولا")
+    await event.answer("پێویستە سەرەتا خاوەنی گروپەکە بیت")
 
 
 @JE313P.on(events.callbackquery.CallbackQuery(data="pins"))
 async def _(event):
 
-    await event.edit(PINS_TEXT, buttons=[[Button.inline("رجوع", data="help")]])
+    await event.edit(PINS_TEXT, buttons=[[Button.inline("گه رانه وه", data="help")]])
