@@ -18,5 +18,5 @@ CAPTION = f"**خێرای ئینته رنیتی بوت:** {ms}\n المالك:『
 
 @JE313P.on(events.NewMessage(pattern="^/خه ت"))
 async def _(event):
-    UMM = [[Button.url("السورس", "https://t.me/JEPTHON")]]
+    UMM = [[Button.url("خاوه نی بۆت", "https://t.me/SARKAUT")]]
     await JE313P.send_file(event.chat_id, IMG, caption=CAPTION, buttons=UMM)
