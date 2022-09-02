@@ -13,7 +13,7 @@ ALIVE = os.environ.get(
     "ALIVE", "@lMl10l"
 )
 
-CAPTION = f"**خێرای ئینته رنیتی بوت:** {ms}\n المالك:『{ALIVE}』"
+CAPTION = f"**خێرای ئینته رنیتی بوت:** {ms}\n سه روک:『{SARKAUT}』"
 
 
 @JE313P.on(events.NewMessage(pattern="^/خه ت"))
