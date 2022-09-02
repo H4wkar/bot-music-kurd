@@ -53,7 +53,7 @@ async def delete_messages(event, perm):
        return
     msg = await event.get_reply_message()
     if not msg:
-      await event.reply("يجب عليك الرد على الرسالة المراد حذفها")
+      await event.reply("پێویستە وەڵامی ئەو نامەیە بدەیتەوە کە دەسڕدرێتەوە")
       return
 
     await msg.delete()
