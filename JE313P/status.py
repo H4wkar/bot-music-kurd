@@ -14,5 +14,5 @@ def is_admin(func):
         if is_admin:
             await func(event, _s)
         else:
-            await event.reply("فقط المشرفين من يستطيعون استخدام الاوامر !")
+            await event.reply("تەنها بەڕێوەبەران دەتوانن فەرمانەکان بەکاربهێنن !")
     return a_c
