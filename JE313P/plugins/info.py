@@ -8,26 +8,26 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 
 MISC_HELP = """
-**✘ بعض اوامر البسيطة للكشف والايدي.**
+**✘ چەند فەرمانێکی سادە بۆ دۆزینەوە و دەست.**
 
-!الايدي
-بالرد على المستخدم لأظهار ايديه او ايدي المجموعة
+/ID
+وەڵامی بەکارهێنەر بدە بۆ ئەوەی دەستی پیشان بدات یان دەستی گروپەکە
 
-!ايدي
-لعرض معلومات المستخدم بالرد عليه
-[𖠄 𝗝𝗲𝗽𝘁𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 𖠄](https://t.me/JEPTHON)
+/id
+بۆ پیشاندانی زانیاری بەکارهێنەر بە وەڵامدانەوەی
+
 """
 
-@JE313P.on(events.NewMessage(pattern="^[!?/]الايدي"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]ID"))
 async def id(event):
 
     if event.is_private:
-       await event.reply(f"الايدي الخاص بك هو`{event.sender_id}`.")
+       await event.reply(f"ئایدی به رێزت `{event.sender_id}`.")
        return
 
     ID = """
-**ايدي الدردشة :** `{}`
-**ايدي المستخدم:** `{}`
+**ئایدی اگڕووپ :** `{}`
+**ئایدی به کاڕهێنه ر:** `{}`
 """
 
     msg = await event.get_reply_message()
@@ -35,21 +35,21 @@ async def id(event):
       await event.reply(ID.format(event.chat_id, event.sender_id))
       return
 
-    await event.reply(f"المستخدم {msg.sender.first_name} /n الايدي `{msg.sender_id}`.")
+    await event.reply(f"بەکارهێنەر {msg.sender.first_name} /n ئایدی `{msg.sender_id}`.")
  
-@JE313P.on(events.NewMessage(pattern="^[!?/]ايدي ?(.*)"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]id ?(.*)"))
 async def info(event):
 
     sed = await JE313P(P(user_id=event.sender_id, offset=42, max_id=0, limit=80))
     hn = await JE313P(GetFullUserRequest(event.sender_id))
-    text = "**معلومات المستخدم:**\n\n"
-    text += "**الاسم الاول:** {}\n"
-    text += "**الاسم الثاني:** {}\n"
-    text += "**الايدي:** `{}`\n"
-    text += "**المعرف:** @{}\n"
-    text += "**عدد الصور:** `{}`\n"
-    text += "**النبذة:** `{}`\n"
-    text += "**رابط حسابه:** [اضغط هنا](tg://user?id={})\n"
+    text = "**زانیاری بەکارهێنەر:**\n\n"
+    text += "**ناوی یەکەم:** {}\n"
+    text += "**ناوی دووەم:** {}\n"
+    text += "**ئایدی:** `{}`\n"
+    text += "**ناسنامه:** @{}\n"
+    text += "**ژمارەی وێنەکان:** `{}`\n"
+    text += "**کورتەیەک:** `{}`\n"
+    textn += "**لینکی ئەکاونتەکە:** [لێرەدا فشار بدە](tg://user?id={})\n"
 
     input_str = event.pattern_match.group(1)
     if not input_str:
@@ -61,14 +61,14 @@ async def info(event):
     hu = await JE313P(GetFullUserRequest(id=input_str))
     sedd = await JE313P(P(user_id=input_str, offset=42, max_id=0, limit=80))
 
-    textn = "**معلومات المستخدم:**\n\n"
-    textn += "**الاسم الاول:** {}\n"
-    textn += "**الاسم الثاني:** {}\n"
-    textn += "**الايدي:** `{}`\n"
-    textn += "**المعرف:** @{}\n"
-    textn += "**عدد الصور:** `{}`\n"
-    textn += "**النبذة:** `{}`\n"
-    textn += "**رابط حسابه:** [اضغط هنا](tg://user?id={})\n"
+    text = "**زانیاری بەکارهێنەر:**\n\n"
+    text += "**ناوی یەکەم:** {}\n"
+    text += "**ناوی دووەم:** {}\n"
+    text += "**ئایدی:** `{}`\n"
+    text += "**ناسنامه:** @{}\n"
+    text += "**ژمارەی وێنەکان:** `{}`\n"
+    text += "**کورتەیەک:** `{}`\n"
+    textn += "**لینکی ئەکاونتەکە:** [لێرەدا فشار بدە](tg://user?id={})\n"
 
     await event.reply(textn.format(ha.first_name, ha.last_name, ha.id, ha.username, sedd.count, hu.about, ha.id))
    
