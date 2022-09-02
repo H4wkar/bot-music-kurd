@@ -9,5 +9,5 @@ class Config(object):
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "")
     SUPPORT = os.environ.get("SUPPORT", "JEPTHONSUPPORT")
     CHANNEL = os.environ.get("CHANNEL", "JEPTHON")
-    START_IMG = os.environ.get("START_IMG", "https://telegra.ph/file/1c8756c70964c492017f9.jpg")
-    CMD_IMG = os.environ.get("CMD_IMG", "https://telegra.ph/file/816807b6f2ef4a7a4530a.jpg")
+    START_IMG = os.environ.get("START_IMG", "")
+    CMD_IMG = os.environ.get("CMD_IMG", "")
