@@ -87,7 +87,7 @@ async def invitelink(event):
     await event.reply(f"گروپەکە {event.chat.title}لینک: [کرتەی ئێرە بکە]({link.link})", link_preview=False)
 
 ADMIN_TEXT = """
-**✘ هەموو فەرمانەکانی ئەدمین پێویستە ئەدمین بن**
+**هەموو فەرمانەکانی ئەدمین پێویستە ئەدمین بن**
 
 /auth
 ( بۆ بەرزکردنەوەی ئەدمینی بەکارهێنەر )
