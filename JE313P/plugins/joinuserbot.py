@@ -16,8 +16,8 @@ from JE313P.status import *
 
 
 
-@JE313P.on(events.NewMessage(pattern="^[!?/]انضم ?(.*)"))
-@JE313P.on(events.NewMessage(pattern="^[!?/]انضم ?(.*)"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]join ?(.*)"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]join ?(.*)"))
 @is_admin
 async def _(e, perm):
     chat_id = e.chat_id
@@ -26,18 +26,18 @@ async def _(e, perm):
         umm = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         if len(e.text) > 6:
             bc = umm[0]
-            text = "جارِ دخول حساب المساعد..."
+            text = "له هاتن دایه ئاکاونتی یارمه تیده ر..."
             event = await e.reply(text, parse_mode=None, link_preview=None )
             try:
                 await client(functions.channels.JoinChannelRequest(channel=bc))
-                await event.edit("تم بنجاح الانضمام للمجموعة ✅\nاذا لم ينضم الحساب استخدم الامر !ادخل + معرف المجموعة")
+                await event.edit("بە سەرکەوتوویی پەیوەندیت بە گروپەکەوە کردووە ✅\nئەگەر ئەکاونتەکە بەشدار نەبوو، فرمانی !Enter + group ID بەکاربهێنە")
             except Exception as e:
                 await event.edit(str(e))   
         else:
             await e.reply(usage, parse_mode=None, link_preview=None )
 
 
-@JE313P.on(events.NewMessage(pattern="^[!?/]ادخل ?(.*)"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]داخل ببه ?(.*)"))
 @is_admin        
 async def _(e, perm):
     chat_id = e.chat_id
@@ -46,11 +46,11 @@ async def _(e, perm):
         umm = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
         if len(e.text) > 7:
             invitelink = umm[0]
-            text = "جارِ دخول حساب المساعد...."
+            text = "له هاتن دایه ئاکاونتی یارمه تیده ر...."
             event = await e.reply(text, parse_mode=None, link_preview=None )
             try:
                 await client(ImportChatInviteRequest(invitelink))
-                await event.edit("تم الانضمام بنجاح ✅🔥")
+                await event.edit("بە سەرکەوتوویی پەیوەندی کرد ✅")
             except Exception as e:
                 await event.edit(str(e))   
         else:
