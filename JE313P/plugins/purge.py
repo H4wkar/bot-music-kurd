@@ -4,18 +4,18 @@ from JE313P.status import *
 import time
 
 PR_HELP = """
-**✘ئه مه به شه فه رمانه کانی پارکردنه وه یه له تایبه ت**
+**ئه م به شه فه رمانه کانی پارکردنه وه یه له تایبه ت**
 
-‣ `پاکردنەوە!`
+‣ `!پاکردنەوە`
 بە وەڵامدانەوەی نامەیەک بۆ سڕینەوەی نامەکانی خوارەوەی
 
-‣ `سرینه وه!`
+‣ `!سرینه وه`
 وەڵامی نامەیەک بدەرەوە بۆ سڕینەوەی
 
 
 """
 
-@JE313P.on(events.NewMessage(pattern=r"^[?!]باکردنه وه"))
+@JE313P.on(events.NewMessage(pattern=r"^[?!]پاکردنه وه"))
 @is_admin
 async def purge_messages(event, perm):
     if not perm.delete_messages:
