@@ -3,57 +3,56 @@ from JE313P import JE313P
 from JE313P.status import *
 
 LOCKS_HELP = """
-**هذه هي اوامر القفل و الفتح  في الدردشة**
+**ئەمانە فەرمانەکانی قفڵکردن و کردنەوەی قفڵن لە چاتدا**
 
-!قفل
-لقفل شيء معين في الدردشة
+!قوفڵ
+بۆ قفڵکردنی شتێکی تایبەت لە چاتەکەدا
 
-!فتح 
-لفتح الصلاحيات عن شيء معين
+!کردنەوە
+بۆ کردنەوەی مۆڵەتەکان بۆ شتێکی دیاریکراو
 
-الصلاحيات
-لعرض الصلاحيات التي يمكنك قفلها
-[𖠄 𝗝𝗲𝗽𝘁𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 𖠄](https://t.me/JEPTHON)
+دەسەڵاتەکان
+بۆ پیشاندانی ئەو هێزانەی کە دەتوانیت قفڵی بکەیت
 """
 
-@JE313P.on(events.NewMessage(pattern="^[!?/]قفل ?(.*)"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]قفڵ ?(.*)"))
 @is_admin
 async def lock(event, perm):
     if not perm.change_info:
-      await event.reply("تحتاج الى بعض صلاحيات المشرف لاستخدام هذا الامر")
+      await event.reply("بۆ بەکارهێنانی ئەم فرمانە پێویستت بە هەندێک ئیمتیازاتی بەڕێوەبەر هەیە")
       return
     input_str = event.pattern_match.group(1)
     if not input_str:
-       await event.reply("يرجى تحديد شيء لقفله اولا")
+       await event.reply("تکایە سەرەتا شتێک هەڵبژێرە بۆ ئەوەی قفڵی بکەیت")
        return
-    if "الرسائل" in input_str:
+    if "پەیامەکان" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_messages=False)
-       await event.reply("- تم قفل الرسائل")
-    elif "الميديا" in input_str:
+       await event.reply("- نامەکان قفڵ دەکرێن")
+    elif "ڕاگەیاندن" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_media=False)
-       await event.reply("- تم قفل الوسائط")
-    elif "الملصقات" in input_str:
+       await event.reply("- میدیا قفڵ کراوە")
+    elif "ستیکەرەکان" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_stickers=False)
-       await event.reply("- تم قفل الملصقات.")
-    elif "المتحركة"in input_str:
+       await event.reply("- ستیکەرەکان قفڵ کراون.")
+    elif "وینه چوڵاوه کان"in input_str:
        await JE313P.edit_permissions(event.chat_id, send_gifs=False)
-       await event.reply("- تم قفل المتحركة")
-    elif "التوجيه" in input_str:
+       await event.reply("- وینه چوڵاوه کان قفڵ کراوە")
+    elif "ڕێڕەوکردن" in input_str:
        await JE313P.edit_permissions(event.chat_id, forwards=False)
-       await event.reply("- تم قفل التوجيه")
-    elif "الالعاب" in input_str:
+       await event.reply("- فەرمان قفڵ کراوە")
+    elif "یارییەکان" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_games=False)
-       await event.reply("- تم قفل الالعاب")
-    elif "الانلاين" in input_str:
+       await event.reply("- یارییەکان قفڵ دەکرێن")
+    elif "لەسەر هێڵ" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_inline=False)
-       await event.reply("- تم قفل الانلاين")
-    elif "التصويت" in input_str:
+       await event.reply("- ئۆنلاین داخراوە")
+    elif "ده‌نگدان" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_polls=False)
-       await event.reply("- تم قفل التصويت")
-    elif "الروابط" in input_str:
+       await event.reply("- دەنگدان داخراوە")
+    elif "بەستەرەکان" in input_str:
        await JE313P.edit_permissions(event.chat_id, embed_link_previews=False)
-       await event.reply("- تم قفل الروابط")
-    elif "الكل" in input_str:
+       await event.reply("- لینکەکان قفڵ کراون")
+    elif "گشت" in input_str:
        await JE313P.edit_permissions(event.chat_id,
           send_messages=False, 
           send_media=False,
@@ -63,47 +62,47 @@ async def lock(event, perm):
           send_inline=False,
           send_polls=False,
           embed_link_previews=False)
-       await event.reply("- تم قفل الكل")
+       await event.reply("- هەموویان قفڵ کراون")
 
 
-@JE313P.on(events.NewMessage(pattern="^[!?/]فتح ?(.*)"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]کردنەوە ?(.*)"))
 @is_admin
 async def unlock(event, perm):
     if not perm.change_info:
-      await event.reply("تحتاج الى بعض صلاحيات المشرف لاستخدام هذا")
+      await event.reply("بۆ بەکارهێنانی ئەمە پێویستت بە هەندێک ئیمتیازاتی بەڕێوەبەر هەیە")
       return
     input_str = event.pattern_match.group(1)
     if not input_str:
-       await event.reply("يرجى تحديد شيء لالغاء قفله اولا")
+       await event.reply("تکایە سەرەتا شتێک هەڵبژێرە بۆ ئەوەی قفڵی بکەیتەوە")
        return
-    if "الرسائل" in input_str:
+    if "پەیامەکان" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_messages=True)
-       await event.reply("تم فتح الكتابة")
-    elif "الميديا" in input_str:
+       await event.reply("نووسین کراوەتەوە")
+    elif "ڕاگەیاندن" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_media=True)
-       await event.reply("تم فتح الوسائط")
-    elif "الملصقات" in input_str:
+       await event.reply("میدیا کرایەوە")
+    elif "ستیکەرەکان" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_stickers=True)
-       await event.reply("تم فتح الملصقات")
-    elif "المتحركة"in input_str:
+       await event.reply("ستیکەرەکان کراوەن")
+    elif "وینه چوڵاوه کان"in input_str:
        await JE313P.edit_permissions(event.chat_id, send_gifs=True)
-       await event.reply("تم فتح المتحركة")
-    elif "التوجيه" in input_str:
+       await event.reply("وینه چوڵاوه کان کرایەوە")
+    elif "ڕێڕەوکردن" in input_str:
        await JE313P.edit_permissions(event.chat_id, forwards=True)
-       await event.reply("تم فتح التوجيه")
-    elif "الالعاب" in input_str:
+       await event.reply("ڕێڕەو کراوەتەوە")
+    elif "یارییەکان" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_games=True)
-       await event.reply("تم فتح الالعاب")
-    elif "الانلاين" in input_str:
+       await event.reply("یارییەکان کراوەن")
+    elif "لەسەر هێڵ" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_inline=True)
-       await event.reply("تم فتح الانلاين")
-    elif "التصويت" in input_str:
+       await event.reply("ئۆنلاین کراوەتەوە")
+    elif "ده‌نگدان" in input_str:
        await JE313P.edit_permissions(event.chat_id, send_polls=True)
-       await event.reply("تم فتح `التصويت")
-    elif "الروابط" in input_str:
+       await event.reply("دەنگدان کراوەتەوە")
+    elif "بەستەرەکان" in input_str:
        await JE313P.edit_permissions(event.chat_id, embed_link_previews=True)
-       await event.reply("تم فتح الروابط")
-    elif "الكل" in input_str:
+       await event.reply("لینکەکان کرانەوە")
+    elif "گشت" in input_str:
        await JE313P.edit_permissions(event.chat_id,
           send_messages=True, 
           send_media=True,
@@ -113,24 +112,24 @@ async def unlock(event, perm):
           send_inline=True,
           send_polls=True,
           embed_link_previews=True)
-       await event.reply("تم فتح الكل")
+       await event.reply("هەموویان کراوەتەوە")
 
 
-@JE313P.on(events.NewMessage(pattern="^[!?/]الصلاحيات"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]دەسەڵاتەکان"))
 async def locktypes(event):
     TEXT = """
 **Locks:**
 
-‣ الرسائل
-‣ الميديا
-‣ الملصقات
-‣ المتحركة
-‣ الروابط
-‣ الالعاب
-‣ الانلاين
-‣ التوجيه
-‣ التصويت
-‣ الكل
+‣ پەیامەکان
+‣ ڕاگەیاندن
+‣ ستیکەر
+‣ وینه چوڵاوه کان
+‣ بەستەرەکان
+‣ یارییەکان
+‣ لەسەر هێڵ
+‣ ڕێڕەو
+‣ ده‌نگدان
+‣ گشت
 """
     await event.reply(TEXT)
 
