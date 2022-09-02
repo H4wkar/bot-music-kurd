@@ -2,21 +2,21 @@ from telethon import events, Button
 from JE313P import JE313P, BOT_USERNAME
 
 btn =[
-    [Button.inline("الادمن", data="admin"),],
-    [Button.inline("التثبيت", data="pins"), Button.inline("التنظيف", data="purges")],
-    [Button.inline("التشغيل", data="play"), Button.inline("المحذوفين", data="zombies")],
-    [Button.inline("القفل", data="locks"), Button.inline("اخرى", data="misc")],
-    [Button.inline("الرئيسية", data="start")]]
+    [Button.inline("بەڕێوەبەر", data="admin"),],
+    [Button.inline("دامەزراندن", data="pins"), Button.inline("پاکردنەوە", data="purges")],
+    [Button.inline("کار پی کردن", data="play"), Button.inline("لابراوە کان", data="zombies")],
+    [Button.inline("قوفڵ", data="locks"), Button.inline("زیاتر", data="misc")],
+    [Button.inline("سەرەکی", data="start")]]
 
-HELP_TEXT = "اهلا بك في قائمة اوامر سورس جيبثون\n\nاضغط على الازرار من الاسفل:"
+HELP_TEXT = "بەخێربێن بۆ لیستی فەرمانەکانی Telethon سەرچاوە\n\nکلیک لە دوگمەکانی خوارەوە بکە:"
 
 
-@JE313P.on(events.NewMessage(pattern="[!?/]الاوامر"))
+@JE313P.on(events.NewMessage(pattern="[!?/]help"))
 async def help(event):
 
     if event.is_group:
-       await event.reply("اضغط على الاسفل لعرض الاوامر", buttons=[
-       [Button.url("اضغط هنا", "t.me/{}?start=help".format(BOT_USERNAME))]])
+       await event.reply("بۆ بینینی فرمانەکان کلیک لە خوارەوە بکە", buttons=[
+       [Button.url("لێرەدا فشار بدە", "t.me/{}?start=help".format(BOT_USERNAME))]])
        return
 
     await event.reply(HELP_TEXT, buttons=btn)
