@@ -4,28 +4,28 @@ from JE313P.status import *
 import time
 
 PR_HELP = """
-**✘ هذه هي قائمة اوامر التنظيف الحاصة بي**
+**✘ئه مه به شه فه رمانه کانی پارکردنه وه یه له تایبه ت**
 
-‣ `تنظيف`
-بالرد على رسالة لحذف ما تحتها من الرسائل 
+‣ `پاکردنەوە`
+بە وەڵامدانەوەی نامەیەک بۆ سڕینەوەی نامەکانی خوارەوەی
 
-‣ `مسح`
-بالرد على رسالة لحذفها
-[𖠄 𝗝𝗲𝗽𝘁𝗵𝗼𝗻 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 𖠄](https://t.me/JEPTHON)
+‣ `سرینه وه`
+وەڵامی نامەیەک بدەرەوە بۆ سڕینەوەی
+
 
 """
 
-@JE313P.on(events.NewMessage(pattern=r"^[?!]تنظيف"))
+@JE313P.on(events.NewMessage(pattern=r"^[?!]باکردنه وه"))
 @is_admin
 async def purge_messages(event, perm):
     if not perm.delete_messages:
-         await event.reply("تحتاج الى صلاحيات الحذف اولا")
+         await event.reply("سەرەتا پێویستت بە مۆڵەتی سڕینەوەیە")
          return
     start = time.perf_counter()
     reply_msg = await event.get_reply_message()
     if not reply_msg:
         await event.reply(
-            "يجب عليك الرد على الرسالة التي تريد حذف ما اسفلها")
+            "پێویستە لە خوارەوە وەڵامی ئەو نامەیە بدەیتەوە کە دەتەوێت بیسڕیتەوە")
         return
     messages = []
     message_id = reply_msg.id
@@ -40,16 +40,16 @@ async def purge_messages(event, perm):
 
     await event.client.delete_messages(event.chat_id, messages)
     time_ = time.perf_counter() - start
-    text = f"تم التنظيف في {time_:0.2f} من الثواني"
+    text = f"پاکراوەتەوە لە {time_:0.2f} لە چرکە"
     await event.respond(text, parse_mode='markdown')
 
 
 
-@JE313P.on(events.NewMessage(pattern="^[!?/]مسح$"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]سرینه وه$"))
 @is_admin
 async def delete_messages(event, perm):
     if not perm.delete_messages:
-       await event.reply("- تحتاج الى صلاحيات الحذف اولا")
+       await event.reply("- سەرەتا پێویستت بە مۆڵەتی سڕینەوەیە")
        return
     msg = await event.get_reply_message()
     if not msg:
@@ -61,4 +61,4 @@ async def delete_messages(event, perm):
 
 @JE313P.on(events.callbackquery.CallbackQuery(data="purges"))
 async def _(event):
-    await event.edit(PR_HELP, buttons=[[Button.inline("رجوع", data="help")]])
+    await event.edit(PR_HELP, buttons=[[Button.inline("گه رانه وه", data="help")]])
