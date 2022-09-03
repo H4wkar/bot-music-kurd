@@ -8,12 +8,12 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 
 MISC_HELP = """
-**✘ چەند فەرمانێکی سادە بۆ دۆزینەوە و دەست.**
+**چەند فەرمانێکی سادە بۆ دۆزینەوە و دەست.**
 
 /ID
 وەڵامی بەکارهێنەر بدە بۆ ئەوەی دەستی پیشان بدات یان دەستی گروپەکە
 
-/id
+/info
 بۆ پیشاندانی زانیاری بەکارهێنەر بە وەڵامدانەوەی
 
 """
@@ -26,8 +26,8 @@ async def id(event):
        return
 
     ID = """
-**ئایدی اگڕووپ :** `{}`
-**ئایدی به کاڕهێنه ر:** `{}`
+**ئایدی گڕووپ :** `{}`
+**ئایدی به کاڕهێنه ر :** `{}`
 """
 
     msg = await event.get_reply_message()
@@ -37,7 +37,7 @@ async def id(event):
 
     await event.reply(f"بەکارهێنەر {msg.sender.first_name} /n ئایدی `{msg.sender_id}`.")
  
-@JE313P.on(events.NewMessage(pattern="^[!?/]id ?(.*)"))
+@JE313P.on(events.NewMessage(pattern="^[!?/]info ?(.*)"))
 async def info(event):
 
     sed = await JE313P(P(user_id=event.sender_id, offset=42, max_id=0, limit=80))
