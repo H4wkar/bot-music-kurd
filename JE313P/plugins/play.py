@@ -408,7 +408,7 @@ async def vplay(event):
 
 
 #playlist
-@JE313P.on(events.NewMessage(pattern="^[?!/]play"))
+@JE313P.on(events.NewMessage(pattern="^تشغيل[?!/]"))
 @is_admin
 async def vc_playlist(event, perm):
     chat_id = event.chat_id
@@ -464,7 +464,7 @@ async def vc_skip(event, perm):
         if op == 0:
             await event.reply("- هیچ شتێک بە هیچ شێوەیەک بەڕێوە ناچێت")
         elif op == 1:
-            await event.reply("10 ،کۆتایی هاتووە بۆیە پەیوەندیەکەم بەجێهێشت")
+            await event.reply("کۆتایی هاتووە بۆیە پەیوەندیەکەم بەجێهێشت")
         else:
             await event.reply(
                 f"**⏭ پەڕیووەتەوە**\n**🎧 ئێستا کاردەکات** - [{op[0]}]({op[1]})",
