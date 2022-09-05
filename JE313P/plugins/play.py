@@ -235,11 +235,11 @@ async def vc_end(event, perm):
         try:
             await call_py.leave_group_call(chat_id)
             clear_queue(chat_id)
-            await event.reply("**بە سەرکەوتوویی قفڵی کرایەوە**")
+            await event.reply("**بە سەرکەوتوویی وەستێنرا**")
         except Exception as e:
             await event.reply(f"**هەڵە:** `{e}`")
     else:
-        await event.reply("**بە سەرکەوتوویی قفڵی کرایەوە**")
+        await event.reply("**بە سەرکەوتوویی وەستێنرا**")
 
 
 
