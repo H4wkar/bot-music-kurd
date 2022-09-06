@@ -21,17 +21,17 @@
             "value": "ENABLE"
         },
         "SUPPORT": {
-            "description": "لێره لینکی گرووپت بنوسه به بێ @",
+            "description": "@ لێره لینکی گرووپت بنوسه به بێ ",
             "required": false,
             "value": "Grup_Shetakann"
         },
         "CHANNEL": {
-            "description": "لێره لینکی که ناڵت بنوسه به بێ ",
+            "description": "@ لێره لینکی که ناڵت بنوسه به بێ ",
             "required": false,
             "value": "Trpay_dllm"
         },
         "BOT_USERNAME": {
-            "description": "یوزرنیمی بۆتت بنوسه به بێ @",
+            "description": "@ یوزرنیمی بۆتت بنوسه به بێ ",
             "required": false,
             "value": ""
         },
