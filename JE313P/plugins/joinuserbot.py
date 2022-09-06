@@ -17,7 +17,6 @@ from JE313P.status import *
 
 
 @JE313P.on(events.NewMessage(pattern="^[!?/]join ?(.*)"))
-@JE313P.on(events.NewMessage(pattern="^[!?/]join ?(.*)"))
 @is_admin
 async def _(e, perm):
     chat_id = e.chat_id
