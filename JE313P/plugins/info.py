@@ -75,4 +75,4 @@ async def info(event):
 
 @JE313P.on(events.callbackquery.CallbackQuery(data="misc"))
 async def _(event):
-    await event.edit(MISC_HELP, buttons=[[Button.inline("رجوع", data="help")]])
+    await event.edit(MISC_HELP, buttons=[[Button.inline("گه رانه وه", data="help")]])
